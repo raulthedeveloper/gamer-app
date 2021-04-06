@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    flex-flow: column;
+    margin: 2rem;
+}
+
+.row{
+
+}
+
+.col{
+
+}
+
+
+.filters{
+    display: flex;
+
+    select{
+        margin: 1rem;
+    }
+}
