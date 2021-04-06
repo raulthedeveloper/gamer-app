@@ -1,7 +1,13 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import Hero from '../layout/Hero/Hero'
+import Card from '../Cards/Cards'
 
-export default function Home() {
+
+
+
+
+export default function Home({gameData}) {
+   
     return (
         <div>
             <Hero/>
@@ -20,7 +26,19 @@ export default function Home() {
                 </select>
                 </div>
                 
-            <h1>Hello World</h1>
+
+            <div className="card-container">
+            { 
+
+            gameData ?  gameData.map((e,index) =>{
+                    return <Card data={e}/>
+                }) : "Loading...."
+                
+            } 
+           
+            </div>
+
+
             </div>
             
         </div>

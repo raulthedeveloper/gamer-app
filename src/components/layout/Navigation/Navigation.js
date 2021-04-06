@@ -7,8 +7,8 @@ export default function Navigation() {
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Platforms</a></li>
+                    <li><a href="#">Genre</a></li>
                 </ul>
             </nav>
         </div>

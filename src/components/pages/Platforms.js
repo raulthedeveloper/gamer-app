@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function cards() {
+export default function Platforms() {
     return (
         <div>
             
