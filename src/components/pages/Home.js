@@ -6,7 +6,9 @@ import Card from '../Cards/Cards'
 
 
 
-export default function Home({gameData}) {
+export default function Home({gameData,changeUrl,next,previous}) {
+   const [currentUrl, setUrl] = useState("https://rawg-video-games-database.p.rapidapi.com/games")
+
    
     return (
         <div>
@@ -31,14 +33,20 @@ export default function Home({gameData}) {
             { 
 
             gameData ?  gameData.map((e,index) =>{
-                    return <Card data={e}/>
+                    return <Card key={e.name} data={e}/>
                 }) : "Loading...."
                 
             } 
            
+
+           
             </div>
 
-
+            <div className="pagination">
+            <button disabled={previous === null} onClick={()=>changeUrl(previous)}>Before</button>
+            <button onClick={()=>changeUrl(next)}>Next</button>
+            </div>
+            
             </div>
             
         </div>

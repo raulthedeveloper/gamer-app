@@ -10,12 +10,20 @@ import {
 } from "react-router-dom";
 
 
+
+
+
 function App() {
 const [gameData, setGameData ] = useState();
+const [next, setNext ] = useState();
+const [ previous, setPrevious ] = useState()
+const [ url, setUrl ] = useState("https://rawg-video-games-database.p.rapidapi.com/games")
+
+
   useEffect(() => {
     const options = {
         method: 'GET',
-        url: 'https://rawg-video-games-database.p.rapidapi.com/games',
+        url: url,
         headers: {
           'x-rapidapi-key': '52b459a4e2msh8fddfaf671beb59p14b298jsn42318c134a1e',
           'x-rapidapi-host': 'rawg-video-games-database.p.rapidapi.com'
@@ -23,15 +31,42 @@ const [gameData, setGameData ] = useState();
       };
       
       axios.request(options).then(function (response) {
-          console.log(response.data.results);
         setGameData(response.data.results)
+        setNext(response.data.next)
+        setPrevious(response.data.previous)
       }).catch(function (error) {
           console.error(error);
       });
-},[])
+
+      
+      
+      
+},[url])
+
+function changeUrl(url){
+  const options = {
+    method: 'GET',
+    url: url
+  };
+  
+  axios.request(options).then(function (response) {
+    setGameData(response.data.results)
+    setNext(response.data.next)
+    setPrevious(response.data.previous)
+  }).then(() => {
+    document.body.scrollTop = 300;
+    document.documentElement.scrollTop = 300;
+  })
+  .catch(function (error) {
+      console.error(error);
+  });
+
+ 
+}
+
   return (
     <div className="App">
-      <Home gameData={gameData}/>
+      <Home gameData={gameData} changeUrl={changeUrl} next={next} previous={previous}/>
     </div>
   );
 }

@@ -2,7 +2,11 @@ import React from 'react'
 import './cards.scss'
 
 export default function cards({data}) {
-    
+
+   
+       console.log(data.clip.preview)
+   
+
     return (
         <div className="card">
             <img src={data.background_image} />
@@ -29,7 +33,7 @@ export default function cards({data}) {
                 <span>#1 Top 2006</span>
                 </div>
                 
-                <span></span>
+                
             </div>
         </div>
     )
